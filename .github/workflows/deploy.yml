@@ -19,7 +19,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          echo "$DOCKERHUB_TOKEN" | docker login \
+          printf '%s' "$DOCKERHUB_TOKEN" | docker login docker.io \
             --username "$DOCKERHUB_USERNAME" \
             --password-stdin
 
@@ -44,3 +44,6 @@ jobs:
             cd /home/ubuntu/CICD-NodeJS-App
             docker compose down
             docker compose up -d --build
+
+
+            
