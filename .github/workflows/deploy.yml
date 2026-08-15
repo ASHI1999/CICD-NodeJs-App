@@ -14,15 +14,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # - name: DockerHub Login
-      #   env:
-      #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      #   run: |
-      #     printf '%s' "$DOCKERHUB_TOKEN" | docker login docker.io \
-      #       --username "$DOCKERHUB_USERNAME" \
-      #       --password-stdin
-        - name: Check Docker Hub Credentials
+      - name: Check Docker Hub Credentials
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -53,5 +45,3 @@ jobs:
             cd /home/ubuntu/CICD-NodeJS-App
             docker compose down
             docker compose up -d --build
-
-
